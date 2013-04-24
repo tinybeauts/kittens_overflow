@@ -2,6 +2,9 @@ KittensOverflow::Application.routes.draw do
   root :to => 'pages#home'
   
   resources :users
+
+  match '/login' => 'sessions#create', :via => [:post]
+  match '/logout' => 'sessions#destroy', :via => [:delete]
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

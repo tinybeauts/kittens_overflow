@@ -1,0 +1,11 @@
+<h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+
+<% if login? %>
+  <%= "Welcome, #{current_user.username}"%>
+<% else %>
+  <%= render "shared/login_form" %>
+  <%= render "shared/user_signup_form" %>
+<% end %>
+
+
