@@ -3,6 +3,10 @@ KittensOverflow::Application.routes.draw do
   
   resources :users
 
+  resources :images, only: [:show] do
+    resources :stories, only: [:show, :create]
+  end
+
   match '/login' => 'sessions#create', :via => [:post]
   match '/logout' => 'sessions#destroy', :via => [:delete]
   

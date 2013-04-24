@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
-  include SessionsHelper
-
+  
   def create
     @user = User.find_by_email(params[:login][:email])
                 .try(:authenticate, params[:login][:password])

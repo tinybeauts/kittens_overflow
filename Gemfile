@@ -4,6 +4,7 @@ gem 'rails', '3.2.13'
 gem 'pg'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'jquery-rails'
+gem 'faker'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -15,6 +16,7 @@ group :development do
   gem 'rspec-rails'
   gem 'debugger'
   gem 'annotate'
+  gem 'better_errors'
 end
 
 group :test do
