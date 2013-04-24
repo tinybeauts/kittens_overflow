@@ -1,0 +1,9 @@
+<%= form_for @user, :url => { :controller => 'users', :action => 'create'} do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <!-- <%= f.object %> -->
+  <%= f.text_field :username, :placeholder => 'User Name' %>
+  <%= f.text_field :email, :placeholder => 'Email' %>
+  <%= f.password_field :password, :placeholder => 'Password' %>
+  <%= f.password_field :password_confirmation, :placeholder => 'Password Confirmation' %>
+  <%= f.submit "Sign up" %>
+<% end %>
