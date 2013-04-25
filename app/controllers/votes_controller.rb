@@ -5,10 +5,16 @@ class VotesController < ApplicationController
     obj = obj_class.find_by_id(params[:object_id])
     vote = obj.votes.build
     vote.user = current_user
-    if vote.save
-      render obj.votes.count.to_s
-    else
-      401
+      
+    respond_to do |format|
+
+      if vote.save
+        format.html
+        format.json { render :json => obj.votes.count }
+      else
+        format.html
+        format.json { render :json => 401 }
+      end
     end
   end
 end

@@ -3,6 +3,8 @@
 </div>
 
 <div>
-  <%= link_to 'vote', new_vote_path(@story.class.to_s, @story.id), :method => 'post'%>
-  <%= @story.body.html_safe %>
+  <%= render 'shared/vote', :obj => @story %>
+  <div>
+    <%= @story.body.html_safe %>
+  </div>
 </div>

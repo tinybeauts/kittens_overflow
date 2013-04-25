@@ -13,3 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$(document).ready(function(){
+  $('a.vote_button').on('ajax:success', function(xhr, data, status){
+    $(this).next('.vote_count').text(data);
+  });
+});
