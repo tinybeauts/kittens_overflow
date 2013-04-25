@@ -2,13 +2,6 @@
   User.create(username: Faker::Name.first_name, email: Faker::Internet.email, password: '123', password_confirmation: '123')
 end
 
-# images = %w(http://distilleryimage7.ak.instagram.com/b81d8986ab5d11e2a63622000a9e28ec_7.jpg
-#             http://distilleryimage9.ak.instagram.com/1b1eb9a0ac4011e2aeb222000a1f9e7e_7.jpg
-#             )
-
-# images.each do |i|
-#   Image.create(source_url: i)
-# end
 
 images = Instagram.retrieve_popular_images
 

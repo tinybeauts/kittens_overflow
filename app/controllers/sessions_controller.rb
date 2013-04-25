@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
     else
       flash.now[:error] = "Login failed"
       @user = User.new
+      @images = Image.all
       render 'pages/home'
     end
   end

@@ -1,2 +1,4 @@
-<%= link_to 'Vote', new_vote_path(obj.class.to_s,obj.id), :method => 'post', :remote => true, :'data-type' => 'json', :class => 'vote_button' %>
-<span class='vote_count'><%= obj.votes.count %></span>
+<%= link_to new_vote_path(obj.class.to_s,obj.id), :method => 'post', :remote => true, :'data-type' => 'json', :class => 'vote-button' do %>
+  <span class='fui-heart-24'></span>
+<% end %>
+<span class='vote-count'><%= obj.votes.count %></span>

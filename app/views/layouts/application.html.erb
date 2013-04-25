@@ -10,7 +10,25 @@
 
   <%= render 'shared/main_menu' %>
 
-  <div class="container body">
+
+
+  <div class="container-fluid body">
+    <% if flash[:alert] %>
+      <div class="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Warning!</strong> <%= flash[:alert] %>
+      </div>
+    <% elsif flash[:error] %>
+      <div class="alert alert-error">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Idiot!</strong> <%= flash[:error] %>
+      </div>
+    <% end %>
+
+    <% unless is_logged_in? %>
+      <%= render "shared/login_form" %>
+      <%= render "shared/user_signup_form" %>
+    <% end %>
     <%= yield %>
   </div>
 

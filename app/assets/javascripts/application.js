@@ -13,16 +13,35 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
 $(function () {
     // Custom selects
     $("select").dropkick();
 });
 
 $(document).ready(function(){
-  $('a.vote_button').on('ajax:success', function(xhr, data, status){
-    $(this).next('.vote_count').text(data);
+  $('a.vote-button').on('ajax:success', function(xhr, data, status){
+    $(this).next('.vote-count').text(data);
   });
 
+  var authButton = $('.auth-button');
+    $('.lightbox').hide();
+
+  authButton.on('click', function(e){
+    e.preventDefault();
+    var form = $($(this).attr('href'));
+    var forms = $('.lightbox');
+    
+    $.each(forms, function(index, value){
+      var value = $(value)
+      if (value.attr('id') !== form.attr('id')){
+        $(value).hide();
+      }
+    });
+    form.toggle();
+  });
+
+  // $(document).on('click')
 
 
 // Some general UI pack related JS
