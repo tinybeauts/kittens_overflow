@@ -34,4 +34,10 @@ KittensOverflow::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  INSTAGRAM_CONFIG = YAML.load_file("#{::Rails.root}/config/instagram.yml")
+
+  ENV['INSTAGRAM_CLIENT_ID'] = INSTAGRAM_CONFIG['client']
+  ENV['INSTAGRAM_CLIENT_SECRET'] = INSTAGRAM_CONFIG['secret']
+  ENV['INSTAGRAM_ACCESS_TOKEN'] = INSTAGRAM_CONFIG['access_token']
 end
