@@ -8,4 +8,7 @@
   <%= render "shared/user_signup_form" %>
 <% end %>
 
+<% @images.each do |i| %>
+  <%= link_to(image_tag(i.source_url), image_path(i.id)) %>
+<% end %>
 

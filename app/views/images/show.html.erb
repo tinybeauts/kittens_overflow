@@ -1,0 +1,15 @@
+<%= image_tag(@image.source_url) %>
+
+<div class='stories'>
+<% @image.stories.each do |s| %>
+  <div class="story">
+    <% puts "STORY:" + s.inspect %>
+    <% puts "USER:" + s.user.inspect %>
+    <span style="inline-block"><%= s.user.username %></span><hr />
+    <p><%= raw(s.body) %></p><%= link_to 'read more', image_story_path(@image, s) %><hr />
+  </div>
+<% end %>
+
+<%= render 'stories/form' %>
+
+</div>
