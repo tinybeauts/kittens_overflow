@@ -1,0 +1,17 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+
+      <ul class='nav'>
+        <li><%= link_to 'Home', root_path %></li>
+        <li><a href='#login' class='login-button'>Login</a></li>
+
+        <% if is_logged_in?%>
+          <li><%= link_to 'Logout', logout_path, :method => :delete %></li>
+        <% end %>
+
+
+      </ul>
+    </div>
+  </div>
+</div>

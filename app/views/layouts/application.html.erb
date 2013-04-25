@@ -7,11 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if is_logged_in?%>
-    <%= link_to 'Logout', logout_path, :method => :delete %>
-  <% end %>
-  
-  <%= yield %>
+
+  <%= render 'shared/main_menu' %>
+
+  <div class="container body">
+    <%= yield %>
+  </div>
 
 </body>
 </html>
