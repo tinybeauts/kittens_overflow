@@ -10,6 +10,7 @@
   </div>
 <% end %>
 
-<%= render 'stories/form' %>
-
+<% if is_logged_in? %>
+  <%= render 'stories/form' %>
+<% end %>
 </div>
