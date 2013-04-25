@@ -9,7 +9,10 @@ KittensOverflow::Application.routes.draw do
 
   match '/login' => 'sessions#create', :via => [:post]
   match '/logout' => 'sessions#destroy', :via => [:delete]
-  
+  match '/vote/:object_type/:object_id' => 'votes#create', :via => [:post], as: 'new_vote'
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -18,4 +18,5 @@ class StoriesController < ApplicationController
       render 'images/show'
     end
   end
+
 end

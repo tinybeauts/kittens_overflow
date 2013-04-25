@@ -3,5 +3,8 @@
 </div>
 
 <div>
-<%= @story.body.html_safe %>
+  <%= render 'shared/vote', :obj => @story %>
+  <div>
+    <%= @story.body.html_safe %>
+  </div>
 </div>

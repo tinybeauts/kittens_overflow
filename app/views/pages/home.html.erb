@@ -1,14 +1,15 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
-<% if login? %>
+<% if is_logged_in? %>
   <%= "Welcome, #{current_user.username}"%>
 <% else %>
   <%= render "shared/login_form" %>
   <%= render "shared/user_signup_form" %>
 <% end %>
 
-<% @images.each do |i| %>
-  <%= link_to(image_tag(i.source_url), image_path(i.id)) %>
+<% @images.each do |image| %>
+  <%= render 'shared/vote', :obj => image %>
+  <%= link_to(image_tag(image.source_url), image_path(image.id)) %>
 <% end %>
 
