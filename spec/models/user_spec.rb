@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  email           :string(255)
+#  username        :string(255)
+#  password_digest :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 require 'spec_helper'
 
 describe User do
@@ -62,43 +74,65 @@ describe User do
     end
 
     context 'attribute accessibles' do
-      it {should_not allow_mass_assignment_of(:password_digest)}
-      it {should_not allow_mass_assignment_of(:id)}
+      it { should_not allow_mass_assignment_of(:password_digest) }
+      it { should_not allow_mass_assignment_of(:id) }
+      it { should allow_mass_assignment_of(:email) }
+      it { should allow_mass_assignment_of(:username) }
+      it { should allow_mass_assignment_of(:password) }
+      it { should allow_mass_assignment_of(:password_confirmation) }
     end
 
-    context 'instance method' do
+    context 'instance methods' do
       it { should respond_to(:has_voted_on?) }
+      it { should respond_to(:authenticate) }
 
       describe 'has_voted_on' do
         before do
           user.save
         end
-
-        it "should return true if vote for object exist" do
-          #we're trying to practice decoupling and keeping our dependencies down. Not sure if it's possible
-          vote = mock_model('Vote', {
-            :user_id => user.id,
-            :votable_type => 'Image',
-            :votable_id => 1
-            } )
-
-          image = mock_model('Image', {
-            :id => 1,
-            :votes => [vote],
-            :class => 'Image'
-          })
-
+        
+        it "should return true if vote for object exists" do
+          image_vote = FactoryGirl.create(:image_vote, user: user)
+          image = image_vote.votable
           user.has_voted_on?(image).should be_true
         end
-        
-        # it "should return true if vote for object exists" do
-        #   image = mock_model(Image, {
-        #     :id => 1
-        #     })
 
-        #   vote = Vote.create()
+        it "should return false if vote for object does not exists" do
+          image_vote = FactoryGirl.create(:image_vote)
+          image = image_vote.votable
+          user.has_voted_on?(image).should be_false
+        end
+
+       # it "should return true if vote for object exist" do
+        #   #we're trying to practice decoupling and keeping our dependencies down. Not sure if it's possible
+        #   vote = mock_model('Vote', {
+        #     :user_id => user.id,
+        #     :votable_type => 'Image',
+        #     :votable_id => 1
+        #     } )
+
+        #   image = mock_model('Image', {
+        #     :id => 1,
+        #     :votes => [vote],
+        #     :class => 'Image'
+        #   })
+
+        #   user.has_voted_on?(image).should be_true
         # end
+      end
 
+      describe 'authenticate' do
+        before do
+          user.save
+        end
+
+        it "should return user with the right password" do
+          user.authenticate(user.password).should eq(user)
+        end
+
+        it "should return false with the wrong password" do
+          user.authenticate("Wrong password").should be_false
+        end
       end
     end
 

@@ -65,6 +65,11 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     facter (1.6.18)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.2.1)
+      factory_girl (~> 4.2.0)
+      railties (>= 3.0.0)
     faker (1.1.2)
       i18n (~> 0.5)
     hike (1.2.2)
@@ -171,6 +176,7 @@ DEPENDENCIES
   clockwork
   coffee-rails (~> 3.2.1)
   debugger
+  factory_girl_rails
   faker
   httparty
   jquery-rails
