@@ -1,16 +1,21 @@
-<%= image_tag(@image.source_url) %>
-  <%= render 'shared/vote', :obj => @image %>
 
-<div class='stories'>
-<% @image.stories.each do |story| %>
-  <div class="story">
-    <span style="inline-block"><%= story.user.username %></span><hr />
-    <%= render 'shared/vote', :obj => story %>
-    <p><%= raw(story.body) %></p><%= link_to 'read more', image_story_path(@image, story) %><hr />
+<div class="row">
+  <div class="span12">
+    <%= image_tag(@image.source_url) %>
+      <%= render 'shared/vote', :obj => @image %>
+
+    <div class='stories'>
+    <% @image.stories.each do |story| %>
+      <div class="story">
+        <span style="inline-block"><%= story.user.username %></span>
+        <%= render 'shared/vote', :obj => story %>
+        <p><%= raw(story.body) %></p><%= link_to 'read more', image_story_path(@image, story) %><hr />
+      </div>
+    <% end %>
+
+    <% if is_logged_in? %>
+      <%= render 'stories/form' %>
+    <% end %>
+    </div>
   </div>
-<% end %>
-
-<% if is_logged_in? %>
-  <%= render 'stories/form' %>
-<% end %>
 </div>
