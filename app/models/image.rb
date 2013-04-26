@@ -5,4 +5,7 @@ class Image < ActiveRecord::Base
 
   default_scope order('created_at DESC')
   scope :recent, limit(10)
+
+  validates :source_url, presence: true
+
 end
