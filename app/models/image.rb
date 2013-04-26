@@ -19,5 +19,6 @@ class Image < ActiveRecord::Base
   scope :recent, limit(10)
 
   validates :source_url, presence: true
+  validates :owner, presence: true
 
 end

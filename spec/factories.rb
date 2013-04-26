@@ -1,4 +1,4 @@
-FactoryGirl.define do |variable|
+FactoryGirl.define do
   factory :user do
     sequence(:username) { |n| "foo_#{n}" }
     email { "#{username}@email.com" }
@@ -16,6 +16,8 @@ FactoryGirl.define do |variable|
     image
   end
 
+
+  ###polymorphic association
   factory :image_vote, :class => 'Vote' do
     user
     association :votable, :factory => :image

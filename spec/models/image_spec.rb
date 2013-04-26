@@ -27,16 +27,8 @@ describe Image do
   end
 
   context 'validations' do
-    describe "without a source_url" do
-      before(:each) { image.source_url = "" }
-      it { should_not be_valid }
-    end
-
-    describe "without a owner" do
-      ###PROBLEM... the above before block set source_url to be blank but it doesnt reset it
-      before { image.owner = "" }
-      it { should be_valid }
-    end
+    it { should validate_presence_of(:source_url) }
+    it { should validate_presence_of(:owner) }
   end
 
   describe "should return the images" do
@@ -45,7 +37,7 @@ describe Image do
     end
 
     it "created in descending order" do
-      image_created_later = Image.create(source_url: "http://something.com/image2.jpg")
+      image_created_later = Image.create(source_url: "http://something.com/image2.jpg", owner: "Johny2")
       images = Image.all
       images[0].should == image_created_later
       images[1].should == image

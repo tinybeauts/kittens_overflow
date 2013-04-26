@@ -14,5 +14,21 @@
 require 'spec_helper'
 
 describe Story do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'associations' do
+    it { should belong_to(:user) }
+    it { should belong_to(:image) }
+    it { should have_many(:votes) }
+  end
+
+  context 'mass assignment' do
+    it { should_not allow_mass_assignment_of(:user_id) }
+    it { should_not allow_mass_assignment_of(:image_id) }
+    it { should_not allow_mass_assignment_of(:votes_count) }
+    it { should allow_mass_assignment_of(:body) }
+  end
+
+  describe "when retrieving images" do
+    it "should return images in desccending order based on created_at"
+  end
+
 end

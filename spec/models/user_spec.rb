@@ -102,23 +102,6 @@ describe User do
           image = image_vote.votable
           user.has_voted_on?(image).should be_false
         end
-
-       # it "should return true if vote for object exist" do
-        #   #we're trying to practice decoupling and keeping our dependencies down. Not sure if it's possible
-        #   vote = mock_model('Vote', {
-        #     :user_id => user.id,
-        #     :votable_type => 'Image',
-        #     :votable_id => 1
-        #     } )
-
-        #   image = mock_model('Image', {
-        #     :id => 1,
-        #     :votes => [vote],
-        #     :class => 'Image'
-        #   })
-
-        #   user.has_voted_on?(image).should be_true
-        # end
       end
 
       describe 'authenticate' do
