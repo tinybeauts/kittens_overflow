@@ -10,7 +10,7 @@ class VotesController < ApplicationController
 
       if vote.save
         format.html
-        format.json { render :json => obj.votes.count }
+        format.json { render :json => obj.reload.votes_count }
       else
         format.html
         format.json { 401 }

@@ -6,6 +6,10 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'jquery-rails'
 gem 'faker'
 gem 'httparty'
+gem 'sidekiq'
+gem 'redis'
+gem 'clockwork', :require => false
+gem 'rspec-rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -19,6 +23,7 @@ group :development do
   gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'nyan-cat-formatter'
 end
 
 group :test do

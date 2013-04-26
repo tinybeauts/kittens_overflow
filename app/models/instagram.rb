@@ -8,7 +8,7 @@ class Instagram
     response['data'].each do |image|
       images << image['images']['low_resolution']['url']
     end
-    images
+    images.each { |i| Image.create(source_url: i) }
   end
   # respond['data'][0]['images']['standard_resolution']['url']
 

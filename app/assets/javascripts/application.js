@@ -22,7 +22,12 @@ $(function () {
 $(document).ready(function(){
   $('a.vote-button').on('ajax:success', function(xhr, data, status){
     $this = $(this);
-    $this.next('.vote-count').text(data);
+    // debugger
+
+    var voteCount = $(this).siblings('.vote-count').text();
+    newVoteCount = parseInt(voteCount)+1
+    $this.next('.vote-count').text(newVoteCount);
+
     $this.attr('data-remote', 'false');
     $this.attr('href', '#').addClass('loved');
     $this.on('click', function(e){ 
