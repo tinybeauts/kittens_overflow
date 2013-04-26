@@ -14,9 +14,8 @@ class User < ActiveRecord::Base
   validates :username, presence: true,
                        uniqueness: true
 
-
-
-
-
+  def has_voted_on?(obj)
+    Vote.find_by_user_id_and_votable_type_and_votable_id(self.id, obj.class.to_s, obj.id)
+  end
 
 end

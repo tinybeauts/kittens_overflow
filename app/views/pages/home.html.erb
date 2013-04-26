@@ -2,7 +2,7 @@
   <div class="row">
     <% @images.each do |image| %>
       <div class="span4 imagela">
-        <%= link_to(image_tag(image.source_url), image_path(image.id)) %>
+        <%= link_to(image_tag(image.source_url), image_path(image.id) ) %>
         <%= render 'shared/vote', :obj => image %>
       </div>
     <% end %>

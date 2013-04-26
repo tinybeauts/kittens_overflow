@@ -1,4 +1,16 @@
-<%= link_to new_vote_path(obj.class.to_s,obj.id), :method => 'post', :remote => true, :'data-type' => 'json', :class => 'vote-button' do %>
-  <span class='fui-heart-24'></span>
+<% if is_logged_in? && current_user.has_voted_on?(obj) %>
+  <%= link_to '#', :method => 'post', :class => 'vote-button loved' do %>
+    <span class='fui-heart-24'></span>
+  <% end %>
+  <span class='vote-count'><%= obj.votes.count %></span>
+<% elsif !is_logged_in? %>
+  <%= link_to '#', :method => 'post', :class => 'vote-button disabled' do %>
+    <span class='fui-heart-24'></span>
+  <% end %>
+  <span class='vote-count'><%= obj.votes.count %></span>
+<% else %>
+  <%= link_to new_vote_path(obj.class.to_s,obj.id), :method => 'post', :remote => true, :'data-type' => 'json', :class => 'vote-button' do %>
+    <span class='fui-heart-24'></span>
+  <% end %>
+  <span class='vote-count'><%= obj.votes.count %></span>
 <% end %>
-<span class='vote-count'><%= obj.votes.count %></span>

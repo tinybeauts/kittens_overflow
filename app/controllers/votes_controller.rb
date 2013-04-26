@@ -13,7 +13,7 @@ class VotesController < ApplicationController
         format.json { render :json => obj.votes.count }
       else
         format.html
-        format.json { render :json => 401 }
+        format.json { 401 }
       end
     end
   end

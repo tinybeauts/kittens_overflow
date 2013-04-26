@@ -21,7 +21,13 @@ $(function () {
 
 $(document).ready(function(){
   $('a.vote-button').on('ajax:success', function(xhr, data, status){
-    $(this).next('.vote-count').text(data);
+    $this = $(this);
+    $this.next('.vote-count').text(data);
+    $this.attr('data-remote', 'false');
+    $this.attr('href', '#').addClass('loved');
+    $this.on('click', function(e){ 
+      e.preventDefault(); 
+    });
   });
 
   var authButton = $('.auth-button');

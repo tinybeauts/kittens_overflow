@@ -6,6 +6,7 @@ class UsersController < ApplicationController
       login(@user)
       redirect_to root_path
     else
+      @images = Image.all
       render 'pages/home'
     end
   end
